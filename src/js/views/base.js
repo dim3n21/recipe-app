@@ -10,7 +10,7 @@ export const elementsString = {
   loader: 'loader'
 };
 
-// - - - - begin loader
+// - - - - begin loader - - - -
 
 export const renderLoader = (parent) => {
   const loader = `
@@ -28,4 +28,4 @@ export const clearLoader = () => {
   if (loader) loader.parentElement.removeChild(loader);
 }
 
-// - - - - end lodaer
+// - - - - end lodaer - - - -
