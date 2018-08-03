@@ -29,7 +29,6 @@ import {
  **/
 
 const state = {};
-window.state = state;
 
 const controlSearch = async () => {
 
@@ -107,7 +106,6 @@ const controlRecipe = async () => {
       // render recipe
       clearLoader();
       recipeView.renderRecipe(state.recipe, state.likes.isLiked(id));
-      console.log(state.recipe);
 
     } catch (error) {
       alert(`something is wrong with Recipe -- ${error}`)
@@ -155,9 +153,6 @@ elements.shopping.addEventListener('click', e => {
  *** LIKE model
  **/
 
- // TESTING
- state.likes = new Likes()
- likesView.toggleLikeMenu(state.likes.getNumLikes());
 
  const controleLike = () => {
    if (!state.likes) state.likes = new Likes();
@@ -179,7 +174,6 @@ elements.shopping.addEventListener('click', e => {
 
      // Add like to the UI list - добавляем рецепт в список понравившихся
      likesView.renderLike(newLike);
-     console.log(state.likes);
 
     // User HAS likes current recipe - нажат "Лайк"
    } else {
@@ -196,6 +190,23 @@ elements.shopping.addEventListener('click', e => {
    likesView.toggleLikeMenu(state.likes.getNumLikes());
 
  }
+
+ // Restore liked recipes on page load - возобновляем созраненный массив
+
+ window.addEventListener('load', () => {
+
+   state.likes = new Likes()
+
+   // Restore likes - возбновляем массив лайков
+   state.likes.readStorage();
+
+   // Toggle like menu button - добавляем/убираем иконку лайк
+   likesView.toggleLikeMenu(state.likes.getNumLikes());
+
+   // Render the existing likes - отображае понравившийся рецепт в поле like
+   state.likes.likes.forEach(like => likesView.renderLike(like));
+
+ })
 
 
 // Handling recipe button clicks - управления для кнопок на рецептах
@@ -217,5 +228,3 @@ elements.recipe.addEventListener('click', e => {
     controleLike();
   }
 })
-
-window.l = new List;
