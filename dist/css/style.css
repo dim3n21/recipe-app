@@ -125,7 +125,7 @@ body {
 .heading-2 {
   font-size: 1.8rem;
   font-weight: 600;
-  color: #747b8e;
+  color: #ffffff;
   text-transform: uppercase;
   margin-bottom: 2.5rem;
   text-align: center;
@@ -433,7 +433,7 @@ body {
     text-align: center;
     width: 90%;
     margin-bottom: 3rem;
-    color: #968B87; }
+    color: #ffffff; }
   .recipe__by {
     font-weight: 700; }
 
